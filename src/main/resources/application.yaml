@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: spring-kafka-client
+  profiles:
+    group:
+      "local": "local"
+    active: local
+
+---
+spring:
+  config:
+    activate:
+      on-profile: "local"
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    consumer:
+      group-id: ryan
+      auto-offset-reset: latest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      fetch-max-wait-ms-config: 60000
