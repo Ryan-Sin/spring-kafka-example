@@ -16,9 +16,12 @@ spring:
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      enable-idempotence_config: true
+      acks-config: all
+      max-in-flight-requests-per-connection: 5
+      retries-config: 5
     consumer:
       group-id: ryan
       auto-offset-reset: latest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      fetch-max-wait-ms-config: 60000
